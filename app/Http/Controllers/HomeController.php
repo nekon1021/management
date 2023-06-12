@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,9 +12,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private $productController;
+
+    public function __construct(ProductController $productController)
     {
         $this->middleware('auth');
+        $this->productController = $productController;
     }
 
     /**
@@ -23,6 +27,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return $this->productController->index();
+    }
+
+    public function create(Request $request)
+    {
+        return $this->productController->create(request());
+    }
+
+    public function store(Request $request)
+    {
+        
+        return $this->productController->store(request());
+
+    }
+
+    public function show($id)
+    {
+        return $this->productController->show($id);
+    }
+
+    public function edit($id)
+    {
+        return $this->productController->edit($id);
     }
 }
