@@ -39,10 +39,30 @@
             <td>{{ $product->stock }}</td>
             <td>{{ $product->company_id }}</td>
             <td><a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-primary">詳細</a></td>
-            <td><a class="btn btn-danger">削除</a></td>
+            <td>
+                <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" class="delete-form">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">削除</button>
+
+                </form>
+            </td>
         </tr>
         @endforeach
 
     </table>
 </div>
+
+<script>
+    // 削除確認のダイアログを表示する
+    document.querySelectorAll('.delete-form').forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (confirm('本当に削除しますか？')) {
+                this.submit();
+            }
+        });
+    });
+</script>
+
 @endsection

@@ -47,9 +47,25 @@ class Product extends Model
             'product_name' => $request->product_name,
             'price' => $request->price,
             'stock' => $request->stock,
+            'comment' => $request->comment ?? null,
+            'image' => $request->image ?? null,
         ]);
     }
 
-    
+    // 更新処理
+    public function updateProduct($request, $product)
+    {
+        
+            $product->fill([
+                'company_id' => $request->company_id,
+                'product_name' => $request->product_name,
+                'price' => $request->price,
+                'stock' => $request->stock,
+                'comment' => $request->comment,
+                'image' => $request->image,
+            ])->save();
+
+            return $product;
+    }
 
 }

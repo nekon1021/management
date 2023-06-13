@@ -19,9 +19,10 @@
         <input type="text" name="product_name" id="product_name" value="{{ $product->product_name }}" class="form-control">
       </div>
 
+      <!-- メーカーのフィールドは非表示または読み取り専用にする -->
       <div class="form-group">
-        <label for="manufacturer">メーカー</label>
-        <input type="text" name="manufacturer" id="manufacturer" value="{{ $product->manufacturer }}" class="form-control">
+        <label for="company_id">メーカー</label>
+        <input type="text" name="company_id" id="company_id" value="{{ $product->company_id }}" class="form-control" readonly>
       </div>
 
       <div class="form-group">

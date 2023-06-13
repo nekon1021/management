@@ -87,11 +87,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     // 更新処理
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $updateProdcut = $this->product->updateProduct($request, $product);
+        $updateProduct = $this->product->updateProduct($request, $product);
 
+        // 更新後にホーム画面にリダイレクト
         return redirect()->route('home');
     }
 
@@ -103,11 +106,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        // Prodcutsテーブルから指定のIDのレコード一件取得
-        $product = Product::find($id);
-        // レコードを削除
-        $product->delete();
-        // 削除したらホーム画面にリダイレクト
-        return redirect()->route('home');
+       // Productsテーブルから指定のIDのレコード1件を取得
+       $product = Product::find($id);
+       // レコードを削除
+       $product->delete();
+       // 削除したら一覧画面にリダイレクト
+       return redirect()->route('home');
+
+        
     }
 }
