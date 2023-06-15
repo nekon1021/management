@@ -9,6 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
+   
     // モデルに関連付けるテーブル
     protected $table = 'products';
     // テーブルに関連付ける主キー
@@ -55,17 +56,24 @@ class Product extends Model
     // 更新処理
     public function updateProduct($request, $product)
     {
-        
+        if($product) {
             $product->fill([
                 'company_id' => $request->company_id,
                 'product_name' => $request->product_name,
                 'price' => $request->price,
                 'stock' => $request->stock,
-                'comment' => $request->comment,
-                'image' => $request->image,
+                'comment' => $request->comment ?? null,
+                'image' => $request->image ?? null,
             ])->save();
 
             return $product;
-    }
+        } else {
 
+            // エラーメッセージを表示する
+            echo "製品が見つかりませんでした";
+        }
+
+        }
+
+    
 }

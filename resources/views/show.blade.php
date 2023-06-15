@@ -8,8 +8,8 @@
     <table class="table table-striped">
         <tbody>
             <tr>
-              <td>商品情報ID</td>
-              <th></th>
+                <td>商品情報ID</td>
+                <th>{{ $product->id }}</th>
             </tr>
             <tr>
                 <td>商品画像</td>

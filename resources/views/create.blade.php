@@ -14,13 +14,11 @@
     <div class="form-group">
       <label>メーカー</label>
       <select class="form-control" name="company_id" id="company_id">
-        <option value="0">メーカーを選択してください</option>
-        <option value="1">企業1</option>
-        <option value="2">企業2</option>
-        <option value="3">企業3</option>
+        @foreach (Config::get('companies.company_name') as $key => $val)
+          <option value="{{ $key }}">{{ $val }}</option>
+        @endforeach
       </select>
     </div>
-
 
     <div class="form-group">
       <label>価格</label>

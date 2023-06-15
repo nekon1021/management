@@ -5,8 +5,8 @@
 @section('content')
 <div class="container">
     <form method="get" action="" class="form-inline">
-        <select name="manufacturer_name">
-            <option value="0">メーカー名を選択してください</option>
+        <select id="company_id" name="company_id">
+            <option value="">メーカー名を選択してください</option>
             <option value="1">企業1</option>
             <option value="2">企業2</option>
             <option value="3">企業3</option>

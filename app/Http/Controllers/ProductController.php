@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Company;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Config;
 class ProductController extends Controller
 {
     public function __construct()
@@ -33,7 +34,8 @@ class ProductController extends Controller
      // 登録画面
     public function create(Request $request)
     {
-        return view('create');
+        $companies = Config::get('companies');
+        return view('create', compact('companies'));
     }
 
     /**
@@ -44,8 +46,8 @@ class ProductController extends Controller
      */
 
      // 登録処理
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+
         $registerProduct = $this->product->InsertProduct($request);
         // リダイレクトするなどの処理を行う
         return redirect()->route('home');
