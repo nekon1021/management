@@ -10,7 +10,7 @@
   @method('PUT')
     <fieldset>
       <div class="form-group">
-        <lavel>商品情報ID</lavel>
+        <label>商品情報ID</label>
         <input type="text" value="{{ $product->company_id }}" class="form-control" disabled>
       </div>
 
@@ -22,7 +22,13 @@
       <!-- メーカーのフィールドは非表示または読み取り専用にする -->
       <div class="form-group">
         <label for="company_id">メーカー</label>
-        <input type="text" name="company_id" id="company_id" value="{{ $product->company_id }}" class="form-control" readonly>
+          <select class="form-control" name="company_id" id="company_id">
+            @foreach ($companies as $company_id => $company_name)
+              <option value="{{ $company_id }}" {{ $product->company_id == $company_id ? 'selected' : ''}}>
+                {{ $company_name}}
+              </option>
+            @endforeach
+          </select>
       </div>
 
       <div class="form-group">

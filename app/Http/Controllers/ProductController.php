@@ -79,7 +79,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        return view('edit', compact('product'));
+        $companies = config('companies');
+
+        return view('edit', compact('product', 'companies'));
     }
 
     /**
@@ -94,7 +96,8 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $updateProduct = $this->product->updateProduct($request, $product);
+        $companies = Config::get('companies');
+        $updateProduct = $this->product->updateProduct($request, $product, $companies);
 
         // 更新後にホーム画面にリダイレクト
         return redirect()->route('home');
