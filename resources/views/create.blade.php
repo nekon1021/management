@@ -14,8 +14,8 @@
     <div class="form-group">
       <label>メーカー</label>
       <select class="form-control" name="company_id" id="company_id">
-        @foreach (Config::get('companies.company_name') as $key => $val)
-          <option value="{{ $key }}">{{ $val }}</option>
+        @foreach (config('companies') as $company_id => $company_name)
+          <option value="{{ $company_id }}">{{ $company_name }}</option>
         @endforeach
       </select>
     </div>
