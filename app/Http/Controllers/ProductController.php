@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Company;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 class ProductController extends Controller
@@ -65,7 +66,7 @@ class ProductController extends Controller
      public function show($id)
     {
         $product = Product::find($id);
-        return view('show', compact('product'));
+            return view('show', compact('product'));
     }
 
     /**
@@ -81,8 +82,9 @@ class ProductController extends Controller
         $product = Product::find($id);
         $companies = config('companies');
 
-        return view('edit', compact('product', 'companies'));
-    }
+        return view('edit', compact('product', 'companies'))
+            ->with('action', route('products.show', ['product' => $id]));
+        }
 
     /**
      * Update the specified resource in storage.

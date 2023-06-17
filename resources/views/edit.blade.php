@@ -5,7 +5,8 @@
 @section('content')
 <div class="container small">
   <h1>商品編集</h1>
-  <form action="{{ route('products.update', ['product' => $product->company_id])}}" method="POST">
+  <form action="{{ route('products.update', ['product' => $product->id])}}" method="POST">
+
   @csrf
   @method('PUT')
     <fieldset>
@@ -54,7 +55,7 @@
     </fieldset>
 
     <div class="text-center">
-        <a href="{{ route('products.show', ['product' => $product->company_id]) }}" class="btn btn-secondary">戻る</a>
+        <a href="{{ $action }}" class="btn btn-secondary">戻る</a>
         <button type="submit" class="btn btn-success">更新</button>
     </div>
 

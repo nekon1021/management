@@ -5,6 +5,11 @@
 @section('content')
 <div class="container">
     <h3>商品情報</h3>
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <table class="table table-striped">
         <tbody>
             <tr>
@@ -42,6 +47,7 @@
         <a href="{{ route('home') }}" class="btn btn-secondary">戻る</a>
         <a href="{{ route('products.edit', ['product' => $product->id]) }}" class="btn btn-info">編集</a>
     </div>
+    
 
 </div>
 @endsection

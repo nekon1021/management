@@ -70,7 +70,7 @@ class Product extends Model
         } else {
 
             // エラーメッセージを表示する
-            echo "製品が見つかりませんでした";
+            return redirect()->back()->with('error', '見つかりませんでした');
         }
 
         }
