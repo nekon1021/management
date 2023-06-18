@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form method="get" action="" class="form-inline">
+    <form method="get" action="" class="form-inline" enctype="multipart/form-data">
         <select id="company_id" name="company_id">
             <option value="">メーカー名を選択してください</option>
             <option value="1">企業1</option>
@@ -33,7 +33,10 @@
         @foreach ($products as $product)
         <tr>
             <td>{{ $product->id }}</td>
-            <td>{{ $product->image }}</td>
+            <td>
+                    <img src="{{ asset('storage/image/' . $product->image) }}" width="25%" alt="{{ $product->image }}">
+               
+            </td>
             <td>{{ $product->product_name }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->stock }}</td>
