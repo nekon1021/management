@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('stock');
             $table->text('comment')->nullable();
-            $table->string('image')->nullable();
+            $table->string('img_path')->nullable();
             $table->timestamps();
         });
     }
@@ -33,9 +33,11 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
+            $table->dropColumn('img_path');
+            
         });
 
         Schema::dropIfExists('products');
+
     }
 }

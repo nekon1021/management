@@ -3,6 +3,11 @@
 @section('title', '商品一覧')
 
 @section('content')
+@if (session('successMessage'))
+  <div class="alert alert-success text-center">
+    {{ session('successMessage') }}
+  </div> 
+@endif
 <div class="container">
     <form method="get" action="" class="form-inline" enctype="multipart/form-data">
         <select id="company_id" name="company_id">
@@ -34,8 +39,7 @@
         <tr>
             <td>{{ $product->id }}</td>
             <td>
-                    <img src="{{ asset('storage/image/' . $product->image) }}" width="25%" alt="{{ $product->image }}">
-               
+                <img src="{{ asset('storage/' . $registerProduct->image) }}" alt="Product Image">
             </td>
             <td>{{ $product->product_name }}</td>
             <td>{{ $product->price }}</td>

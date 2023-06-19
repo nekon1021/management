@@ -37,7 +37,7 @@
 
     <div class="form-group" style="margin-bottom: 20px;">
       <labrl>商品画像</labrl>
-      <input type="file" class="form-control" name="image" id="image">
+      <input type="file" class="form-control" name="img_path" id="img_path">
     </div>
 
     <div class="form-gorup text-center">

@@ -57,22 +57,11 @@ class ProductController extends Controller
      // 登録処理
     public function store(Request $request){
         // ディレクトリ名
-        $image = $request->file('image');
-        $path = $image->store('public/images');
-
-        // 保存した画像ファイル名
-        $filename = basename($path);
-       
-        $registerProduct = $this->product->InsertProduct($request);
-
-        // 画像のパスをデータベースに保存する
-        $registerProduct->image = $filename;
-        $registerProduct->save();
+        $registerProduct = $this->product->insertProduct($request);
+           
+        return redirect()->route('home')->with('successMessage', '登録に成功しました。');
         
-        // リダイレクトするなどの処理を行う
-        return redirect()->route('home');
     }
-
     /**
      * Display the specified resource.
      *

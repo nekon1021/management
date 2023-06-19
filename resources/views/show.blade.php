@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <td>商品画像</td>
-                <th>{{ $product->image }}</th>
+                <th>{{ $product->img_path }}</th>
             </tr>
             <tr>
                 <td>商品名</td>

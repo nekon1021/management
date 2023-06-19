@@ -22,7 +22,7 @@ class Product extends Model
         'price',
         'stock',
         'comment',
-        'image',
+        'img_path',
         'created_at',
         'updated_at',
     ];
@@ -49,7 +49,7 @@ class Product extends Model
             'price' => $request->price,
             'stock' => $request->stock,
             'comment' => $request->comment ?? null,
-            'image' => $request->image ?? null,
+            'img_path' => $request->img_path ?? null,
         ]);
     }
 
@@ -63,7 +63,7 @@ class Product extends Model
                 'price' => $request->price,
                 'stock' => $request->stock,
                 'comment' => $request->comment ?? null,
-                'image' => $request->image ?? null,
+                'img_path' => $request->img_path ?? null,
             ])->save();
 
             return $product;

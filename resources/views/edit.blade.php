@@ -50,7 +50,7 @@
 
       <div class="form-group" style="margin-bottom: 20px;">
         <label>商品画像</label>
-        <input type="file" name="image" id="image" value="{{ $product->image }}" class="form-control">
+        <input type="file" name="img_path" id="img_path" value="{{ $product->img_path }}" class="form-control">
       </div>
     </fieldset>
 
