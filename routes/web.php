@@ -20,7 +20,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 // 一覧
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('products', ProductController::class);
+Route::get('/products/search', 'ProductController@search')->name('products.search');
+
+

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class Product extends Model
 {
@@ -14,8 +16,8 @@ class Product extends Model
     protected $table = 'products';
     // テーブルに関連付ける主キー
     protected $primaryKey = 'id';
-
     
+
     protected $fillable = [
         'company_id',
         'product_name',
@@ -27,10 +29,18 @@ class Product extends Model
         'updated_at',
     ];
 
+    protected $rules = [
+        'company_id' => 'required',
+        'product_name' => 'required',
+        'price' => 'required',
+        'stock' => 'required',
+    ];
+
+    
     protected $casts = [
         'price' => 'integer',
     ];
-
+    
     /**
      *  一覧画面表示用にproductsテーブルから全てのデータを取得
      */
@@ -39,9 +49,24 @@ class Product extends Model
         return Product::all();
     }
 
+    public function getImageUrlAttribute()
+    {
+        if ($this->img_path) {
+            return asset('storage/images/' . $this->img_path);
+        }
+        
+        return null;
+    }
+
   
     public function insertProduct($request)
-    {
+    {   
+        $validator = Validator::make($request->all(), $this->rules);
+
+    // バリデーションに失敗した場合は例外をスローする
+    if ($validator->fails()) {
+        throw new ValidationException($validator);
+    }
         // リクエストデータを基に管理マスターユーザーに登録する
         return $this->create([
             'company_id' => $request->company_id,

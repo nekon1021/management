@@ -8,21 +8,22 @@
     {{ session('successMessage') }}
   </div> 
 @endif
+
 <div class="container">
-    <form method="get" action="" class="form-inline" enctype="multipart/form-data">
-        <select id="company_id" name="company_id">
+    <form method="GET" action="" class="form-inline">
+      <select id="company_id" name="company_id">
             <option value="">メーカー名を選択してください</option>
             <option value="1">企業1</option>
             <option value="2">企業2</option>
             <option value="3">企業3</option>
         </select>
-        <input type="text" name="" value="" placeholder="検索キーワード">
+        <input type="text" name="keyword" value="" placeholder="検索キーワード">
         <input type="submit" value="検索" class="btn btn-info" style="margin-left: 10px; color: white;">
     </form>
 
     <div class="text-right">
         <a href="products/create" class="btn" style="background-color: #f0ad4e; color: white; width: 100px;">商品登録</a>
-    </div>
+</div>
 
     <table class="table mx-auto" style="width: 1000px;">
         <tr class="table-info">
@@ -39,8 +40,13 @@
         <tr>
             <td>{{ $product->id }}</td>
             <td>
-                <img src="{{ asset('storage/' . $registerProduct->image) }}" alt="Product Image">
+                @if ($product->img_path)
+                    
+                @else
+                    <span>画像なし</span>
+                @endif
             </td>
+
             <td>{{ $product->product_name }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->stock }}</td>

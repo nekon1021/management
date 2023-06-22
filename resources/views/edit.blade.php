@@ -26,7 +26,7 @@
           <select class="form-control" name="company_id" id="company_id">
             @foreach ($companies as $company_id => $company_name)
               <option value="{{ $company_id }}" {{ $product->company_id == $company_id ? 'selected' : ''}}>
-                {{ $company_name}}
+                {{ $company_name }}
               </option>
             @endforeach
           </select>
@@ -50,16 +50,19 @@
 
       <div class="form-group" style="margin-bottom: 20px;">
         <label>商品画像</label>
-        <input type="file" name="img_path" id="img_path" value="{{ $product->img_path }}" class="form-control">
-      </div>
+        
+        <input type="file" name="img_path" id="img_path" class="form-control">
+    </div>
+
     </fieldset>
 
     <div class="text-center">
         <a href="{{ $action }}" class="btn btn-secondary">戻る</a>
         <button type="submit" class="btn btn-success">更新</button>
     </div>
-
+    
   </form>
+  
 </div>
 
 @endsection

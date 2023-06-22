@@ -7,12 +7,12 @@
   <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
-      <label for="product_name">商品名</label>
+      <label for="product_name">商品名<span class="badge bg-danger">必須</span></label>
       <input type="text" class="form-control" name="product_name" id="product_name">
     </div>
 
     <div class="form-group">
-      <label for="company_id">メーカー</label>
+      <label for="company_id">メーカー<span class="badge bg-danger">必須</span></label>
         <select class="form-control" name="company_id" id="company_id">
           @foreach (config('companies') as $company_id => $company_name)
             <option value="{{ $company_id }}">{{ $company_name }}</option>
@@ -21,12 +21,12 @@
     </div>
 
     <div class="form-group">
-      <label for="price">価格</label>
+      <label for="price">価格<span class="badge bg-danger">必須</span></label>
       <input type="text" class="form-control" name="price" id="price">
     </div>
 
     <div class="form-group">
-      <label for="stock">在庫数</label>
+      <label for="stock">在庫数<span class="badge bg-danger">必須</span></label>
       <input type="text" class="form-control" name="stock" id="stock">
     </div>
 
